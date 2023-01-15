@@ -32,9 +32,14 @@ def getNovel(articleNum):
     title=re.match(regex01,title)
     #內文標題是書名
     str='<h1>%s</h1>'%title[0]
-    #所有的章節 
-    for child in bs.find('div',{'id':'tbchapterlist'}).children:
-        str=str+'%s'%child
+    #找到div的dom
+    books=bs.find('div',{'id':'tbchapterlist'}).children
+    #把網址改成絕對路徑
+    for a in books.select('a'):
+        a['href']="https://tw.hjwzw.com"+a['href']
+    #找出所有章節
+    for book in books:
+        str=str+'%s'%book
     #放在子資料夾novels 如果沒有就新增    
     folderPath = os.path.join(os.getcwd(), 'novels')
     if not os.path.exists(folderPath):
