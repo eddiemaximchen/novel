@@ -33,7 +33,7 @@ def getNovel(articleNum):
     #內文標題是書名
     str='<h1>%s</h1>'%title[0]
     #找到div的dom
-    books=bs.find('div',{'id':'tbchapterlist'}).children
+    books=bs.find('div',{'id':'tbchapterlist'})
     #把網址改成絕對路徑
     for a in books.select('a'):
         a['href']="https://tw.hjwzw.com"+a['href']
