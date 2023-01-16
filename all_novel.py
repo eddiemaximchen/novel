@@ -1,9 +1,6 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import re
-from urllib.request import urlopen
-from bs4 import BeautifulSoup
-import re
 import os
 #鬥破蒼穹目錄
 def getNovel(articleNum):
