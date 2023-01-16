@@ -49,5 +49,6 @@ def getNovel(articleNum):
     fileobj =open(path, 'wt',encoding='UTF-8')
     print(str,file=fileobj)
     fileobj.close()
-#鬥破蒼穹
-getNovel('1642')
+if __name__=="__main__":    
+    #鬥破蒼穹
+    getNovel('1642')
