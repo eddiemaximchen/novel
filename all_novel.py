@@ -2,6 +2,7 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import re
 import os
+
 def getNovel(articleNum):
     
     url='https://tw.hjwzw.com/Book/Chapter/%s'%articleNum
@@ -45,15 +46,19 @@ def getNovel(articleNum):
     fileobj =open(path, 'wt',encoding='UTF-8')
     print(str,file=fileobj)
     fileobj.close()
-
-html = urlopen('https://tw.hjwzw.com/Channel/all')
-bs = BeautifulSoup(html.read(),'html.parser')
-links=bs.find_all('a')
-for link in links:
-    regex01=r'/Book/\d+'
-    url=re.match(regex01,link.attrs['href'])
-    if url:
-        chapters=url.group().split('/Book/')
-        chapters=chapters[1].split()
-        for chapter in chapters:
-            getNovel(chapter)
+    
+def getAllNovel():
+    html = urlopen('https://tw.hjwzw.com/Channel/all')
+    bs = BeautifulSoup(html.read(),'html.parser')
+    links=bs.find_all('a')
+    for link in links:
+        regex01=r'/Book/\d+'
+        url=re.match(regex01,link.attrs['href'])
+        if url:
+            chapters=url.group().split('/Book/')
+            chapters=chapters[1].split()
+            for chapter in chapters:
+                getNovel(chapter)
+                
+if __name__=="__main__":  
+    getAllNovel()
