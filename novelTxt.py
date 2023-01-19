@@ -39,22 +39,23 @@ def getNovel(articleNum):
     #找出所有章節
     for book in books:
         str=str+'%s'%book
+    #找出全文
+    textData=[]
     for chapter in chapters:
         link = urlopen(chapter)
         text=BeautifulSoup(link.read(),'html.parser').get_text()
-
+        textData.append(text)
     #放在子資料夾novels 如果沒有就新增    
     folderPath = os.path.join(os.getcwd(), 'novels')
     if not os.path.exists(folderPath):
         os.makedirs(folderPath)
-    #寫入檔案 檔名是書名
+    #寫入章節 檔名是書名
     path='./novels/%s.txt'%title[0]
     fileobj =open(path, 'wt',encoding='UTF-8')
     print(text,file=fileobj)
-    #寫入全文 
-    # path2='./novels/%s.txt'%title[0]
-    # with open(path2, "a") as file_object:
-    #     file_object.write(text)
+    #寫入全文 檔名是書名
+    with open('./novels/%s.txt,'w',encodjng='utf-8')
+        file.write('\n'.join(textData))
     fileobj.close()
 if __name__=="__main__":  
 #鬥破蒼穹
