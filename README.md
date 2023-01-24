@@ -1,3 +1,3 @@
 # novel
-use BeautifulSoup to download novels
-use gTTS and mpg123 to read novels automatically after download.
+use BeautifulSoup to download novels<br>
+automatically read novels using gTTS and mpg123
